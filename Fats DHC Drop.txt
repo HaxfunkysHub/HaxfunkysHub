@@ -1,0 +1,174 @@
+-- Example made by twink marie
+
+local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))(
+)
+
+local Players = game:GetService("Players")
+
+local LocalPlayer = Players.LocalPlayer
+
+local mouse = LocalPlayer:GetMouse()
+
+local Camera = workspace.CurrentCamera
+
+local Debris = game:GetService("Debris")
+
+local UserInputService = game:GetService("UserInputService")
+
+warn("Loading script...")
+
+local X = Material.Load({
+
+Title = "Fast Dropper X",
+
+Style = 3,
+
+SizeX = 500,
+
+SizeY = 350,
+
+Theme = "Dark",
+
+ColorOverrides = {
+
+}
+
+})
+
+local Y = X.New({
+
+Title = "Main"
+
+})
+
+local oneml = Y.Toggle({
+
+Text = "One Million",
+
+Callback = function(Value)
+
+end,
+
+})
+
+local two = Y.Toggle({
+
+Text = "Two Million",
+
+Callback = function(Value)
+
+end,
+
+})
+
+local thr = Y.Toggle({
+
+Text = "Three Million",
+
+Callback = function(Value)
+
+end,
+
+})
+
+local fiu = Y.Toggle({
+
+Text = "Four Million",
+
+Callback = function(Value)
+
+end,
+
+})
+
+local fivwv = Y.Toggle({
+
+Text = "Five Million",
+
+Callback = function(Value)
+
+end,
+
+})
+
+local otneml = Y.Toggle({
+
+Text = "Ten Million",
+
+Callback = function(Value)
+
+end,
+
+})
+
+local all = Y.Toggle({
+
+Text = "All",
+
+Callback = function(Value)
+
+end,
+
+})
+
+local Start = Y.Button({
+
+Text = "Start",
+
+Callback = function()
+
+-- // Vars
+
+local Workspace = game.Workspace
+
+local Ignored = Workspace.Ignored
+
+local Drops = Ignored.Drop
+
+local LocalPlayer = game.Players.LocalPlayer
+
+local Char = LocalPlayer.Character
+
+local Hum = Char.HumanoidRootPart
+
+local AMT = 10000
+
+game.ReplicatedStorage.MainEvent:FireServer("DropMoney",AMT)
+
+while wait(2.10) do
+
+for i, v in pairs(Drops:GetChildren()) do
+
+if v.Name == "MoneyDrop" and (Hum.Position - v.Position).Magnitude < 20 then
+
+local clo = v:Clone()
+
+wait()
+
+clo.Parent = Drops
+
+clo.Position = Hum.Position
+
+clo.CFrame = Hum.CFrame
+
+wait()
+
+game:GetService("Players").LocalPlayer.DataFolder.Currency.Value = game:GetService("Players").LocalPlayer.DataFolder.Currency.Value - 10000
+
+if game:GetService("Players").LocalPlayer.DataFolder.Currency.Value < 10000 then
+
+break
+
+end
+
+end
+
+end
+
+end
+
+wait()
+
+end,
+
+})
